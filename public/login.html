@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow - התחברות</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/login.module.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="login-container glass">
+      <h1>TaskFlow Graph</h1>
+      <p>מערכת ניהול משימות ויזואלית</p>
+      <select id="user-select">
+        <option value="" disabled selected>מי מתחבר?</option>
+        <option value="Eden">עדן</option>
+        <option value="Eyal">אייל</option>
+        <option value="Yakir">יקיר</option>
+      </select>
+      <button onclick="handleLogin()" class="btn-primary">
+        כניסה למערכת <i class="fas fa-network-wired"></i>
+      </button>
+    </div>
+    <script src="js/login.js"></script>
+  </body>
+</html>

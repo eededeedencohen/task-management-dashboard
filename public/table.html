@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow - טבלה</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/table.module.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="top-bar glass">
+      <div class="logo">TaskFlow <i class="fas fa-table"></i></div>
+      <div class="controls">
+        <span id="user-display">אורח</span>
+        <button
+          class="btn-primary"
+          onclick="window.location.href='dashboard.html'"
+        >
+          <i class="fas fa-project-diagram"></i> תצוגת גרף
+        </button>
+        <button class="btn-secondary" onclick="openTaskModal('NEW')">
+          + חדש
+        </button>
+        <button class="btn-danger" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <div class="filters-bar glass">
+        <div class="filter-group">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="חיפוש חופשי..."
+            onkeyup="applyFilters()"
+          />
+        </div>
+
+        <div class="filter-group">
+          <label>סטטוס:</label>
+          <select id="filter-status" onchange="applyFilters()">
+            <option value="all">הכל</option>
+            <option value="Pending">ממתין</option>
+            <option value="In Progress">בביצוע</option>
+            <option value="Completed">הושלם</option>
+            <option value="Stuck">תקוע</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label>סוג:</label>
+          <select id="filter-shape" onchange="applyFilters()">
+            <option value="all">הכל</option>
+            <option value="box">רגיל (Box)</option>
+            <option value="ellipse">עיגול</option>
+            <option value="diamond">יהלום</option>
+            <option value="database">DB</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label>מתאריך:</label>
+          <input type="date" id="filter-date-start" onchange="applyFilters()" />
+        </div>
+        <div class="filter-group">
+          <label>עד תאריך:</label>
+          <input type="date" id="filter-date-end" onchange="applyFilters()" />
+        </div>
+
+        <button class="btn-secondary small" onclick="resetFilters()">
+          ניקוי
+        </button>
+      </div>
+
+      <div class="table-wrapper glass">
+        <table>
+          <thead>
+            <tr>
+              <th onclick="sortTable('TaskID')">
+                ID <i class="fas fa-sort"></i>
+              </th>
+              <th onclick="sortTable('TaskName')" style="width: 30%">
+                שם המשימה <i class="fas fa-sort"></i>
+              </th>
+              <th onclick="sortTable('Status')">
+                סטטוס <i class="fas fa-sort"></i>
+              </th>
+              <th onclick="sortTable('StartDatePlanned')">
+                התחלה <i class="fas fa-sort"></i>
+              </th>
+              <th onclick="sortTable('DeathLine')">
+                דד-ליין <i class="fas fa-sort"></i>
+              </th>
+              <th onclick="sortTable('EstimatedHours')">
+                שעות <i class="fas fa-sort"></i>
+              </th>
+              <th>תלוי ב...</th>
+              <th>פעולות</th>
+            </tr>
+          </thead>
+          <tbody id="tasks-body"></tbody>
+        </table>
+        <div
+          id="no-results"
+          class="hidden"
+          style="text-align: center; padding: 20px; color: #aaa"
+        >
+          לא נמצאו משימות התואמות את הסינון
+        </div>
+      </div>
+    </div>
+
+    <div id="task-modal" class="modal-overlay hidden">
+      <div class="modal-content glass">
+        <div class="modal-header">
+          <h2 id="modal-title">פרטי משימה</h2>
+          <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="task-id" />
+          <div class="form-group">
+            <label>שם המשימה</label>
+            <input type="text" id="task-name" />
+          </div>
+          <div class="form-group">
+            <label>פירוט / תיאור</label>
+            <textarea id="task-desc" rows="3"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>סטטוס</label>
+              <select id="task-status">
+                <option value="Pending">ממתין</option>
+                <option value="In Progress">בביצוע</option>
+                <option value="Completed">הושלם</option>
+                <option value="Stuck">תקוע</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>צורה</label>
+              <select id="task-shape">
+                <option value="box">מלבן</option>
+                <option value="ellipse">עיגול</option>
+                <option value="database">מסד נתונים</option>
+                <option value="diamond">יהלום</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>דד-ליין</label>
+              <input type="date" id="task-deadline" />
+            </div>
+            <div class="form-group">
+              <label>שעות</label>
+              <input type="number" id="task-hours" />
+            </div>
+          </div>
+          <div class="chat-section">
+            <label>תגובות</label>
+            <div id="chat-list"></div>
+            <div class="chat-input">
+              <input type="text" id="chat-msg" placeholder="..." />
+              <button onclick="sendNote()">שלח</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-danger" id="btn-delete" onclick="deleteTask()">
+            מחק
+          </button>
+          <button class="btn-primary" onclick="saveTask()">שמור</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/table.js"></script>
+  </body>
+</html>
