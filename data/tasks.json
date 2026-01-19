@@ -426,85 +426,13 @@
     ]
   },
   {
-    "TaskID": 701,
-    "TaskName": "הגדרת צורך ותפקיד",
+    "TaskID": 606,
+    "Dependencies": [],
+    "TaskName": "בלה בלה ",
+    "Description": "בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה בלה ",
     "Status": "Pending",
-    "Shape": "box",
-    "Description": "זיהוי הצורך הארגוני, הגדרת התפקיד, תחומי אחריות, היקף משרה, כישורים נדרשים, תנאי העסקה ותקציב.",
-    "DeathLine": "2026-01-03",
-    "StartDatePlanned": "2026-01-01",
-    "EndDatePlanned": "2026-01-03",
-    "EstimatedHours": 8,
-    "Dependencies": []
-  },
-  {
-    "TaskID": 702,
-    "TaskName": "בניית מודעת דרושים וערוצי גיוס",
-    "Status": "Pending",
-    "Shape": "box",
-    "Description": "ניסוח מודעה מדויקת וברורה, בחירת ערוצי פרסום (אתרי דרושים, רשתות חברתיות, חבר מביא חבר, גורמי השמה וכו').",
-    "DeathLine": "2026-01-05",
-    "StartDatePlanned": "2026-01-04",
-    "EndDatePlanned": "2026-01-05",
-    "EstimatedHours": 6,
-    "Dependencies": [
-      701
-    ]
-  },
-  {
-    "TaskID": 703,
-    "TaskName": "פרסום ואיסוף מועמדויות",
-    "Status": "Pending",
-    "Shape": "box",
-    "Description": "העלאת המודעה, קבלת קורות חיים, מענה ראשוני למועמדים וניהול מאגר הפניות.",
-    "DeathLine": "2026-01-11",
-    "StartDatePlanned": "2026-01-06",
-    "EndDatePlanned": "2026-01-11",
-    "EstimatedHours": 20,
-    "Dependencies": [
-      702
-    ]
-  },
-  {
-    "TaskID": 704,
-    "TaskName": "מיון, ראיונות ובחירת מועמד",
-    "Status": "Pending",
-    "Shape": "box",
-    "Description": "סינון קו\"ח, ראיונות טלפוניים ופרונטליים, בדיקות התאמה (מקצועיות/אישיות), המלצות וקבלת החלטה.",
-    "DeathLine": "2026-02-12",
-    "StartDatePlanned": "2026-01-12",
-    "EndDatePlanned": "2026-02-12",
-    "EstimatedHours": 40,
-    "Dependencies": [
-      703
-    ]
-  },
-  {
-    "TaskID": 705,
-    "TaskName": "הצעת עבודה והכנות לקליטה",
-    "Status": "Pending",
-    "Shape": "box",
-    "Description": "מתן הצעת עבודה, סגירת תנאים, חתימה על חוזה, איסוף מסמכים, הכנת סביבת עבודה והרשאות.",
-    "DeathLine": "2026-02-12",
-    "StartDatePlanned": "2026-02-01",
-    "EndDatePlanned": "2026-02-12",
-    "EstimatedHours": 15,
-    "Dependencies": [
-      704
-    ]
-  },
-  {
-    "TaskID": 706,
-    "TaskName": "שלב סופי: קליטת העובד במערכת והתחלת עבודה בפועל",
-    "Status": "Pending",
-    "Shape": "box",
-    "Description": "הזנת נתונים, פתיחת משתמשים, חפיפה וכניסה לתפקיד.",
-    "DeathLine": "2026-02-10",
-    "StartDatePlanned": "2026-01-22",
-    "EndDatePlanned": "2026-02-10",
-    "EstimatedHours": 10,
-    "Dependencies": [
-      705
-    ]
+    "Shape": "ellipse",
+    "DeathLine": "2026-01-06",
+    "EstimatedHours": "13"
   }
 ]
