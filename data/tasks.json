@@ -8,7 +8,7 @@
     "DeathLine": "2026-01-03",
     "StartDatePlanned": "2026-01-01",
     "EndDatePlanned": "2026-01-03",
-    "EstimatedHours": 8,
+    "EstimatedHours": "8",
     "Dependencies": []
   },
   {
@@ -20,7 +20,7 @@
     "DeathLine": "2026-01-05",
     "StartDatePlanned": "2026-01-04",
     "EndDatePlanned": "2026-01-05",
-    "EstimatedHours": 6,
+    "EstimatedHours": "6",
     "Dependencies": [
       701
     ]
